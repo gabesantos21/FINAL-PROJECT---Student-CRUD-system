@@ -10,7 +10,7 @@ class Student:
         return ("{:<40} {:<40} {:<40} {:<40} {:<40}".format(self.studentID, self.firstName, self.lastName, self.email, self.section))
 
 def printMenu():
-    print('STUDENT RECORD SYSTEM\n')
+    print('\nSTUDENT RECORD SYSTEM\n')
     print('1. Add')
     print('2. Search')
     print('3. Edit')
@@ -31,7 +31,8 @@ def addStudent():
     with open("StudentRecord.txt", "a") as myfile:
         myfile.write("\n")
         myfile.write(student.values())
-    
+
+    print('--------------------------------------------------------')
     print('Successfully Added!')
 
 def searchStudent():
@@ -43,13 +44,18 @@ def searchStudent():
             lines = fp.readlines()
             for studentRecords in lines:
                 if lastname in studentRecords:
+                    print('--------------------------------------------------------')
+                    print('Record Found!')
                     print('\n',studentRecords)
+
     elif choice == '2':
         studentId = input('Enter Student ID Number: ')
         with open("StudentRecord.txt", "r") as fp:
             lines = fp.readlines()
             for studentRecords in lines:
                 if studentId in studentRecords:
+                    print('--------------------------------------------------------')
+                    print('Record Found!')
                     print('\n',studentRecords)
 
 choice = ""
@@ -68,8 +74,9 @@ while (choice != '7'):
     elif choice == '5':
         print('display all')
     elif choice == '6':
-        print('display all')
+        print('display sections')
     elif choice == '7':
         print('exit')
     else:
         print('Invalid Choice')
+
