@@ -6,7 +6,7 @@ Create a python application with the following requirements:
 Display a menu with the following options
 
     a. Add student
-        - allow the user to enter a student's First Name, Last Name, Email and Student Number and Section
+        - allow the user to enter a student's First Name, Last Name, Email, Student Number and Section
         - for each student added, save that student into a database of all added students through the application
         - note that the student number has to be unique
     b. Search
