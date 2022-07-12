@@ -1,0 +1,4 @@
+STUDENT ID                               FIRSTNAME                                LASTNAME                                 EMAIL                                    SECTION                                 
+
+201901306                                gabe                                     santos                                   gabesantos726@gmail.com                  SEG32                                   
+201901305                                bruh                                     nig                                      eer                                      SEG32 Afreeka                           
