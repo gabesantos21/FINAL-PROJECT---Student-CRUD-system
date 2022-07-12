@@ -1,6 +1,4 @@
-STUDENT ID                               FIRSTNAME                                LASTNAME                                 EMAIL                                    SECTION                                 
-
-201901306                                gabe                                     santos                                   gabesantos726@gmail.com                  SEG32                                   
-201901305                                bruh                                     nig                                      eer                                      SEG32 Afreeka                           
-69                                       nice                                     nice                                     nice@mail.com                            nice                                    
-420                                      nice                                     nice                                     gabe                                     ss                                      
+StudentID                                FirstName                                LastName                                 Email                                    Section
+69                                       nice                                     nice                                     nice                                     nice
+9696                                     nyuh                                     nyuh                                     nyuh                                     nyuh
+696969                                   nicest                                   nicest                                   nicest                                   nicest                                  
