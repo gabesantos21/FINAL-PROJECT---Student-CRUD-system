@@ -37,26 +37,48 @@ def addStudent():
 
 def searchStudent():
     choice = input("Search by \n1. lastname\n2. Student ID Number\n:")
-
+    isFound = False
+    foundStudents = [];
     if choice == '1':
         lastname = input('Enter lastname: ')
         with open("StudentRecord.txt", "r") as fp:
             lines = fp.readlines()
-            for studentRecords in lines:
-                if lastname in studentRecords:
-                    print('--------------------------------------------------------')
-                    print('Record Found!')
-                    print('\n',studentRecords)
+            for n in range(len(lines)):
+                if lastname in lines[n].split():
+                    isFound = True
+                    foundStudents.append(lines[n].split())
+            if isFound:
+                print('--------------------------------------------------------')
+                print('Record Found!\n')
+                for i in range(len(foundStudents)):
+                    print(" ".join(foundStudents[i]))
+                foundStudents.clear()
+            else:
+                print('--------------------------------------------------------')
+                print("Student doesn't exist!")
 
     elif choice == '2':
         studentId = input('Enter Student ID Number: ')
         with open("StudentRecord.txt", "r") as fp:
             lines = fp.readlines()
-            for studentRecords in lines:
-                if studentId in studentRecords:
-                    print('--------------------------------------------------------')
-                    print('Record Found!')
-                    print('\n',studentRecords)
+            for n in range(len(lines)):
+                if studentId in lines[n].split():
+                    isFound = True
+                    foundStudents.append(lines[n].split())
+            if isFound:
+                print('--------------------------------------------------------')
+                print('Record Found!\n')
+                for i in range(len(foundStudents)):
+                    print(" ".join(foundStudents[i]))
+                foundStudents.clear()
+            else:
+                print('--------------------------------------------------------')
+                print("Student doesn't exist!")
+        
+    else:
+        print('--------------------------------------------------------')
+        print("Invalid choice!")
+        
 
 def editStudent():
     studID = input("Enter Student ID: ")
@@ -75,6 +97,7 @@ def editStudent():
                         if len(record2) != 0:
 
                             if newStudID == studID or newStudID == record2[0]:
+                                print('--------------------------------------------------------')
                                 print("Student ID already exists! Please enter a unique student ID!")
                                 isUnique = False
                                 break
@@ -99,8 +122,10 @@ def editStudent():
         fp.close
 
         if not isFound:
+            print('--------------------------------------------------------')
             print("Student doesn't exist!")
 
+        print('--------------------------------------------------------')
         print("Student Successfully Edited!")
 
 def deleteStudent():
@@ -128,6 +153,7 @@ def deleteStudent():
                                 fp.write(line)
                         else:
                             fp.write(line)
+                print('--------------------------------------------------------')
                 print("Student Successfully Deleted!")
                 fp.close
             else:
@@ -139,6 +165,7 @@ def deleteStudent():
                                 fp.write(line)
                         else:
                             fp.write(line)
+                print('--------------------------------------------------------')
                 print("Student Successfully Deleted!")
                 fp.close
     elif choice == '2':
@@ -158,8 +185,10 @@ def deleteStudent():
                         fp.write(line)
             fp.close
             if not isFound:
+                print('--------------------------------------------------------')
                 print("Student doesn't exist!")
             else:
+                print('--------------------------------------------------------')
                 print("Student Successfully Deleted!")
 
 choice = ""
