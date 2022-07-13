@@ -20,20 +20,30 @@ def printMenu():
     print('7. Exit')
 
 def addStudent():
+    studentIdExists = False
     studentId = int(input('Enter your Student ID: '))
-    firstName = input('Enter Firstname: ')
-    lastName = input('Enter Lastname: ')
-    email = input('Enter Email: ')
-    section = input('Enter Section: ')
 
-    student = Student(studentId,firstName,lastName,email,section)
+    with open("StudentRecord.txt", "r") as fp:
+        lines = fp.readlines()
+        for n in range(len(lines)):
+            if str(studentId) in lines[n].split():
+                print('--------------------------------------------------------')
+                print('Student ID already exists!')
+                studentIdExists = True
+                break
+            
+    if not studentIdExists:
+        firstName = input('Enter Firstname: ')
+        lastName = input('Enter Lastname: ')
+        email = input('Enter Email: ')
+        section = input('Enter Section: ')
+        student = Student(studentId,firstName,lastName,email,section)
+        with open("StudentRecord.txt", "a") as myfile:
+            myfile.write("\n")
+            myfile.write(student.values())
 
-    with open("StudentRecord.txt", "a") as myfile:
-        myfile.write("\n")
-        myfile.write(student.values())
-
-    print('--------------------------------------------------------')
-    print('Successfully Added!')
+        print('--------------------------------------------------------')
+        print('Successfully Added!')
 
 def searchStudent():
     choice = input("Search by \n1. lastname\n2. Student ID Number\n:")
