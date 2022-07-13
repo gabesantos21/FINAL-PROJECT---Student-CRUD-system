@@ -86,35 +86,37 @@ def editStudent():
     with open("StudentRecord.txt", "r") as fp:
         lines = fp.readlines()
         for n in range(len(lines)):
-            if studID in lines[n]:
-                isFound = True
-                record = lines[n].split()
-                while True:
-                    isUnique = True
-                    newStudID = input("Enter new Student ID: ")
-                    for studentRecords in lines:
-                        record2 = studentRecords.split()
-                        if len(record2) != 0:
-
-                            if newStudID == studID or newStudID == record2[0]:
-                                print('--------------------------------------------------------')
-                                print("Student ID already exists! Please enter a unique student ID!")
-                                isUnique = False
-                                break
-                    if isUnique:
-                        break
-                newFirstName = input("Enter new first name: ")
-                newLastName = input("Enter new surname: ")
-                newEmail = input("Enter new email address: ")
-                newSection = input("Enter new section: ")
-                newRecord = [newStudID, newFirstName, newLastName, newEmail, newSection]                   
-                for i in range(len(newRecord)):
-                    if newRecord[i] == "":
-                        newRecord[i] = record[i]
+            record = lines[n].split()
+            if len(record) != 0:
+                if studID == record[0]:
+                    isFound = True
                 
-                student = Student(newRecord[0], newRecord[1], newRecord[2], newRecord[3], newRecord[4])
-                lines[n] = student.values().strip() + "\n"
-                break
+                    while True:
+                        isUnique = True
+                        newStudID = input("Enter new Student ID: ")
+                        for studentRecords in lines:
+                            record2 = studentRecords.split()
+                            if len(record2) != 0:
+
+                                if newStudID == studID or newStudID == record2[0]:
+                                    print('--------------------------------------------------------')
+                                    print("Student ID already exists! Please enter a unique student ID!")
+                                    isUnique = False
+                                    break
+                        if isUnique:
+                            break
+                    newFirstName = input("Enter new first name: ")
+                    newLastName = input("Enter new surname: ")
+                    newEmail = input("Enter new email address: ")
+                    newSection = input("Enter new section: ")
+                    newRecord = [newStudID, newFirstName, newLastName, newEmail, newSection]                   
+                    for i in range(len(newRecord)):
+                        if newRecord[i] == "":
+                            newRecord[i] = record[i]
+                
+                    student = Student(newRecord[0], newRecord[1], newRecord[2], newRecord[3], newRecord[4])
+                    lines[n] = student.values().strip() + "\n"
+                    break
 
         with open("StudentRecord.txt", "w") as fp:
             for line in lines:
@@ -124,9 +126,9 @@ def editStudent():
         if not isFound:
             print('--------------------------------------------------------')
             print("Student doesn't exist!")
-
-        print('--------------------------------------------------------')
-        print("Student Successfully Edited!")
+        else:
+            print('--------------------------------------------------------')
+            print("Student Successfully Edited!")
 
 def deleteStudent():
     choice = input("Search by \n1. lastname\n2. Student ID Number\n:")
@@ -138,30 +140,41 @@ def deleteStudent():
         with open("StudentRecord.txt", "r") as fp:
             lines = fp.readlines()
             for studentRecords in lines:
-                if lastname in studentRecords:
-                    count = count + 1
-                    isFound = True
+                record = studentRecords.split()
+                if len(record) != 0:
+                    if lastname == record[2]:
+                        count = count + 1
+                        isFound = True
             if not isFound:
                 print("Student doesn't exist!")
             elif count > 1:
+                isFound = False
                 studID = input("There are multiple students with the same Last Name!\nPlease enter the Student ID instead: ")
                 with open("StudentRecord.txt", "w") as fp:
                     for line in lines:
-                        record = line.split()
-                        if len(record) != 0:
-                            if record[0] != studID:
+                        record2 = line.split()
+                        if len(record2) != 0:
+                            if record2[0] != studID:
                                 fp.write(line)
+                            else:
+                                isFound = True
                         else:
                             fp.write(line)
-                print('--------------------------------------------------------')
-                print("Student Successfully Deleted!")
+                if isFound:
+                    print('--------------------------------------------------------')
+                    print("Student Successfully Deleted!")
+                else:
+                    print('--------------------------------------------------------')
+                    print("Student doesn't exist!")
+                
+                
                 fp.close
             else:
                 with open("StudentRecord.txt", "w") as fp:
                     for line in lines:
-                        record = line.split()
-                        if len(record) != 0:
-                            if record[2] != lastname:
+                        record2 = line.split()
+                        if len(record2) != 0:
+                            if record2[2] != lastname:
                                 fp.write(line)
                         else:
                             fp.write(line)
