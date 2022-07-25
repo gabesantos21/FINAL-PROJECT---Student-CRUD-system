@@ -225,11 +225,12 @@ def my_sort(line):
 def displayAll():
     with open("StudentRecord.txt", "r") as fp:
         fp.readline()
-        print(f"{'ID'} {'First'} {'Last'} {'Email'} {'Section'}")
+        print("{:<40} {:<40} {:<40} {:<40} {:<40}".format("Student ID", "Firstname", "Lastname", "Email", "Section"))
         lines = fp.readlines()
         lines.sort(key=my_sort)
         for line in lines:
-         print(f'{" "}'.join(line.split()))
+            print("{:<40} {:<40} {:<40} {:<40} {:<40}".format(line.split()[0],line.split()[1],line.split()[2],line.split()[3],line.split()[4]))
+
 
 
 def displaySections():
