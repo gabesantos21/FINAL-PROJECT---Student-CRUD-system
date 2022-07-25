@@ -1,3 +1,6 @@
+import string
+
+
 class Student:
     def __init__(self, studentID, firstName, lastName, email, section):
         self.studentID = studentID
@@ -214,6 +217,40 @@ def deleteStudent():
                 print('--------------------------------------------------------')
                 print("Student Successfully Deleted!")
 
+def my_sort(line):
+    line_fields = line.strip().split()
+    id = int(line_fields[0])
+    return id
+
+def displayAll():
+    with open("StudentRecord.txt", "r") as fp:
+        fp.readline()
+        print("{:<40} {:<40} {:<40} {:<40} {:<40}".format("Student ID", "Firstname", "Lastname", "Email", "Section"))
+        lines = fp.readlines()
+        lines.sort(key=my_sort)
+        for line in lines:
+            print("{:<40} {:<40} {:<40} {:<40} {:<40}".format(line.split()[0],line.split()[1],line.split()[2],line.split()[3],line.split()[4]))
+
+
+
+def displaySections():
+    with open("StudentRecord.txt", "r") as fp:
+        print(f"{'Section':<22} {' Count'}")
+        fp.readline()
+        lines = fp.readlines()
+        so = []
+        tdict = {}
+        for n in range(len(lines)):
+         sec = lines[n].split()
+         if sec[4] in tdict.keys():
+          tdict.update({sec[4]: (tdict.get(sec[4])+1)})
+         else:
+            so.append(sec[4])
+            tdict[sec[4]] = 1
+         
+    for k, v in tdict.items():
+        print(f"{k:<25} {v}")
+
 choice = ""
 while (choice != '7'):
     printMenu()
@@ -227,9 +264,9 @@ while (choice != '7'):
     elif choice == '4':
         deleteStudent()
     elif choice == '5':
-        print('display all')
+        displayAll()
     elif choice == '6':
-        print('display sections')
+        displaySections()
     elif choice == '7':
         print('exit')
     else:
