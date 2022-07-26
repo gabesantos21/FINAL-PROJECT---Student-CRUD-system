@@ -1,5 +1,5 @@
 Members:
 
-CODERA, JAN ANDRE
-SALUDO, ARLO MIGUEL
-SANTOS, NATHANIEL GABRIEL
+CODERA, JAN ANDRE - Edit and delete functionality
+SALUDO, ARLO MIGUEL - Display sections and all functionality
+SANTOS, NATHANIEL GABRIEL - Add and search functionality
