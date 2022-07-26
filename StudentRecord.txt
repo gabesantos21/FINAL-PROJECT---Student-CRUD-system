@@ -2,3 +2,5 @@ StudentID                                FirstName                              
 123                                      gg                                       gg                                       gg                                       gg                                      
 1234                                     gg                                       gg                                       gg                                       gg                                      
 201901306                                gabe                                     santos                                   bruh                                     bruh                                    
+1                                        test1                                    test2                                    test-email                               SEG32                                   
+2                                        test2                                    testlast2                                test-email2                              SEG31                                   

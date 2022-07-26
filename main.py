@@ -57,14 +57,15 @@ def searchStudent():
         with open("StudentRecord.txt", "r") as fp:
             lines = fp.readlines()
             for n in range(len(lines)):
-                if lastname in lines[n].split():
+                if lastname == lines[n].split()[2]:
                     isFound = True
                     foundStudents.append(lines[n].split())
             if isFound:
                 print('--------------------------------------------------------')
                 print('Record Found!\n')
+                print("{:<25} {:<25} {:<25} {:<25} {:<25}".format("Student ID", "Firstname", "Lastname", "Email", "Section"))
                 for i in range(len(foundStudents)):
-                    print(" ".join(foundStudents[i]))
+                    print("{:<25} {:<25} {:<25} {:<25} {:<25}".format(foundStudents[i][0],foundStudents[i][1],foundStudents[i][2],foundStudents[i][3],foundStudents[i][4]))
                 foundStudents.clear()
             else:
                 print('--------------------------------------------------------')
@@ -75,14 +76,15 @@ def searchStudent():
         with open("StudentRecord.txt", "r") as fp:
             lines = fp.readlines()
             for n in range(len(lines)):
-                if studentId in lines[n].split():
+                if studentId == lines[n].split()[0]:
                     isFound = True
                     foundStudents.append(lines[n].split())
             if isFound:
                 print('--------------------------------------------------------')
                 print('Record Found!\n')
+                print("{:<25} {:<25} {:<25} {:<25} {:<25}".format("Student ID", "Firstname", "Lastname", "Email", "Section"))
                 for i in range(len(foundStudents)):
-                    print(" ".join(foundStudents[i]))
+                    print("{:<25} {:<25} {:<25} {:<25} {:<25}".format(foundStudents[i][0],foundStudents[i][1],foundStudents[i][2],foundStudents[i][3],foundStudents[i][4]))
                 foundStudents.clear()
             else:
                 print('--------------------------------------------------------')
